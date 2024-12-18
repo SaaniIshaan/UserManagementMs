@@ -1,5 +1,6 @@
 package com.tekarch.user_managementMS.controllers;
 
+import com.tekarch.user_managementMS.DTO.AccountDTO;
 import com.tekarch.user_managementMS.models.PersonalInfo;
 import com.tekarch.user_managementMS.models.User;
 import com.tekarch.user_managementMS.services.UserServiceImpl;
@@ -73,8 +74,35 @@ private UserServiceImpl userServiceImpl;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-
-
     }
 
+    @GetMapping("/{userId}/accounts")
+    public ResponseEntity<List<AccountDTO>> getLinkedAccounts(@PathVariable Long userId) {
+        List<AccountDTO> accounts = userServiceImpl.getLinkedAccounts(userId);
+        return ResponseEntity.ok(accounts);
+    }
+
+    @GetMapping("/{userId}/accounts/{accountId}")
+    public ResponseEntity<AccountDTO> getAccountDetails(@PathVariable Long userId, @PathVariable Long accountId) {
+        AccountDTO account = userServiceImpl.getAccountDetails(userId, accountId);
+        return ResponseEntity.ok(account);
+    }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity<Void> addAccount(@PathVariable Long userId, @RequestBody AccountDTO accountDTO) {
+        userServiceImpl.addAccount(userId, accountDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{userId}/accounts/{accountId}")
+    public ResponseEntity<Void> updateAccount(@PathVariable Long userId, @PathVariable Long accountId, @RequestBody AccountDTO accountDTO) {
+        userServiceImpl.updateAccount(userId, accountId, accountDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{userId}/accounts/{accountId}")
+    public ResponseEntity<Void> deleteAccount(@PathVariable Long userId, @PathVariable Long accountId) {
+        userServiceImpl.deleteAccount(userId, accountId);
+        return ResponseEntity.ok().build();
+    }
 }
