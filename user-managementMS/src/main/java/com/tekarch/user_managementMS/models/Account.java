@@ -25,8 +25,8 @@ public class Account {
     @Column(nullable = false, unique = true, length = 20)
     private String account_number;
 
-    @Column(nullable = false, length = 20)
-    private String account_type;
+    @Column(name = "account_type",nullable = false, length = 20)
+    private String accountType;
 
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal balance = BigDecimal.ZERO;

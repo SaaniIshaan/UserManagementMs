@@ -12,11 +12,13 @@ public interface UserService {
      User createUser(User user);
      List<User> getAllUsers();
      Optional<User> getUserById(Long userId);
+    Optional<User> getUserByEmail(String email);
+    Optional<User> getUserByUsername(String username);
      User updateUser(Long userId, User user);
      public void deleteUser(Long userId);
-     PersonalInfo updatePersonalInfo(Long userId, PersonalInfo personalInfo);
-     Optional<PersonalInfo>getPersonalInfoByUserId(Long userId);
-    public void createPersonalInfo(Long userId, PersonalInfo personalInfo);
+     PersonalInfo updatePersonalInfo(Long userId, PersonalInfo updatedPersonalInfo);
+     Optional<PersonalInfo> getPersonalInfoByUserId(Long userId);
+    PersonalInfo createPersonalInfo(Long userId, PersonalInfo personalInfo);
     List<AccountDTO> getLinkedAccounts(Long userId);
     public AccountDTO getAccountDetails(Long userId, Long accountId);
     public void addAccount(Long userId, AccountDTO accountDTO);

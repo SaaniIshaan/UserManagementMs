@@ -56,6 +56,12 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	implementation 'org.springframework.boot:spring-boot-starter-resttemplate'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// If needed explicitly (hibernate-validator and validation-api are included in the starter)
+//	implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+//	implementation 'javax.validation:validation-api:2.0.1.Final'
+
 }
 
 tasks.named('test') {

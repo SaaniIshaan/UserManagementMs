@@ -39,4 +39,15 @@ public class PersonalInfo {
     @Column(name = "zip_code", length = 20)
     private String zipCode;
 
+//    @PreUpdate
+ //   protected void onUpdate() {
+ //       this.onUpdate();
+ //   }
+
+    // New method to set userId directly
+    public void setUserId(Long userId) {
+        this.user = new User();
+        this.user.setUserId(userId);
+    }
+
 }
