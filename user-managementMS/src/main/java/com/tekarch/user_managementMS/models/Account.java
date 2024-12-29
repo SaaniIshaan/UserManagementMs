@@ -22,8 +22,8 @@ public class Account {
     @Column(name = "account_id", nullable = false)
     private Long accountId;
 
-    @Column(nullable = false, unique = true, length = 20)
-    private String account_number;
+    @Column(name = "account_number", nullable = false, unique = true, length = 20)
+    private String accountNumber;
 
     @Column(name = "account_type",nullable = false, length = 20)
     private String accountType;

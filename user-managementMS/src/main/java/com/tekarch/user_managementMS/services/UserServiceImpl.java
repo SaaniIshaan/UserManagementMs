@@ -147,13 +147,13 @@ public class UserServiceImpl implements UserService {
     public List<AccountDTO> getLinkedAccounts(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
-        String url = ACCOUNT_SERVICE_URL+"?userId=" + userId;
+        String url = ACCOUNT_SERVICE_URL+"?userId="+userId;
         return List.of(restTemplate.getForObject(url, AccountDTO[].class));
     }
 
     @Override
     public AccountDTO getAccountDetails(Long userId, Long accountId) {
-        String url = ACCOUNT_SERVICE_URL + accountId;
+        String url = ACCOUNT_SERVICE_URL+accountId;
         return restTemplate.getForObject(url, AccountDTO.class);
     }
 
@@ -166,13 +166,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateAccount(Long userId, Long accountId, AccountDTO accountDTO) {
-        String url = ACCOUNT_SERVICE_URL + accountId;
+        String url = ACCOUNT_SERVICE_URL+accountId;
         restTemplate.put(url, accountDTO);
     }
 
     @Override
     public void deleteAccount(Long userId, Long accountId) {
-        String url = ACCOUNT_SERVICE_URL + accountId;
+        String url = ACCOUNT_SERVICE_URL+accountId;
         restTemplate.delete(url);
     }
 }
